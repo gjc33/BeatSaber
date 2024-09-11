@@ -36,9 +36,9 @@ ForEach ($Alpha in $AlphaFolders){
 $html += "`n<div class='w3-bar w3-black'>"
 
     ForEach ($Alpha in $AlphaFolders){
-        If($Alpha.Name -eq "0"){$TabColour = "w3-red"} Else {$TabColour = ""}
-        $Click = "openCity(event,'$($Alpha.Name)')"
-        $html += "`n<button class='w3-bar-item w3-button tablink $($TabColour)' onclick='$($Click)'>$($Alpha.Name)</button>"
+        If($Alpha.Name -eq "0"){$TabColour = " w3-red"} Else {$TabColour = ""}
+        $Click = "openCity(event,`"$($Alpha.Name)`")"
+        $html += "`n<button class='w3-bar-item w3-button tablink$($TabColour)' onclick='$($Click)'>$($Alpha.Name)</button>"
     }
 
 $html += "`n</div>"
@@ -50,14 +50,14 @@ ForEach ($Alpha in $AlphaFolders){
     }
 
     $html += "`n<table border='1'>"
-    $html += "`n<tr bgcolor='#9acd32'><th>Artist</th>SongTitle</th><tr>"
+    $html += "`n<tr bgcolor='#9acd32'><th>Artist</th><th>SongTitle</th><tr>"
 
     Foreach ($Track in $BeatList | ? {$_.Alpha -eq $Alpha.Name}){
         $html += "`n<tr><td>$($Track.Artist)</td><td>$($Track.SongTitle)</td></tr>"
     }
 
     $html += "`n</table>"
-    $html += "`n</div>"
+    $html += "`n</div>`n"
 }
 
 $html += @'
