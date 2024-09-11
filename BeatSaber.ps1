@@ -7,7 +7,7 @@
     <body>
 
     <div class="w3-container">
-        <h2>Singstar Catalogue</h2>
+        <h2>BeatSaber Catalogue</h2>
         <p>Click one of the tabs below to change Artist.</p>
 
 '@
@@ -28,6 +28,7 @@ ForEach ($Alpha in $AlphaFolders){
                 Alpha       = $Alpha.Name
                 Artist    = $Tmp[0]
                 SongTitle    = $Tmp[1]
+                Code = $Tmp[2]
             }
             $BeatList.Add($Entry)
         }
@@ -50,10 +51,10 @@ ForEach ($Alpha in $AlphaFolders){
     }
 
     $html += "`n<table border='1'>"
-    $html += "`n<tr bgcolor='#9acd32'><th>Artist</th><th>SongTitle</th><tr>"
+    $html += "`n<tr bgcolor='#9acd32'><th>Artist</th><th>SongTitle</th><th>Code</th><tr>"
 
     Foreach ($Track in $BeatList | ? {$_.Alpha -eq $Alpha.Name}){
-        $html += "`n<tr><td>$($Track.Artist)</td><td>$($Track.SongTitle)</td></tr>"
+        $html += "`n<tr><td>$($Track.Artist)</td><td>$($Track.SongTitle)</td><td>$($Track.Code)</td></tr>"
     }
 
     $html += "`n</table>"
